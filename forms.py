@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField
-from wtforms.validators import DataRequired, URL, Length, Email
+from wtforms.validators import DataRequired, URL, Length
 from flask_ckeditor import CKEditorField
-import email_validator
+
 
 length_password = Length(min=8, message="Field must be at least 8 characters long.")
 
@@ -17,15 +17,15 @@ class CreatePostForm(FlaskForm):
 
 class RegisterForm(FlaskForm):
     name = StringField(label="Name", validators=[DataRequired()])
-    email = StringField(label='Email', validators=[DataRequired(), Email()])
+    email = StringField(label='Email', validators=[DataRequired()])
     password = PasswordField(label='Password', validators=[DataRequired(), length_password])
     submit = SubmitField(label="Sign Me Up!")
 
 class LoginForm(FlaskForm):
-    email = StringField(label='Email', validators=[DataRequired(), Email()])
+    email = StringField(label='Email', validators=[DataRequired()])
     password = PasswordField(label='Password', validators=[DataRequired(), length_password])
     submit = SubmitField(label="Let Me In!")
 
 class CommentForm(FlaskForm):
-    body = CKEditorField("Comment", validators=[DataRequired(), Email()])
+    body = CKEditorField("Comment", validators=[DataRequired()])
     submit = SubmitField(label="ADD COMMENT")
