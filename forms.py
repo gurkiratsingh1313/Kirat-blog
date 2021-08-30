@@ -3,6 +3,7 @@ from wtforms import StringField, SubmitField, PasswordField
 from wtforms.validators import DataRequired, URL, Length, Email
 from wtforms.fields.html5 import EmailField
 from flask_ckeditor import CKEditorField
+import email_validator
 
 length_password = Length(min=8, message="Field must be at least 8 characters long.")
 
